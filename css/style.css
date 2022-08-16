@@ -55,7 +55,7 @@ html, body{
     vertical-align: top;
 }
  
-a {
+a.btn  {
     color: white !important;
 }
  
