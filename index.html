@@ -123,13 +123,13 @@
 				</div>
 				<div class="row mt-2 itemRow">
 					<div class="col" >
-						<button id="btnBack" class="btn btn-primary btn-md float-left" >Back</button>
-						<a id="btnExample" class="btn btn-secondary btn-md float-left mr-3 " >Example</a>
-						<a id="btnExampleWithoutSignature" class="btn btn-secondary btn-md float-left mr-3 " >Example w/o Signature</a>
-						<button id="btnGenerate" class="btn btn-primary btn-md float-right" type="Submit" value="">Generate</button>
-						<button id="btnPrint" class="btn btn-primary btn-md float-right mr-1 " value="">Print all</button>
-						<button id="btnSave" class="btn btn-primary btn-md float-right mr-1 " value="">Save one PDF</button>
-						<button id="btnSaveEach" class="btn btn-primary btn-md float-right mr-1 " value="">Save each participant as PDF</button>
+						<button id="btnBack" class="btn btn-primary btn-md float-left mb-1" >Back</button>
+						<a id="btnExample" class="btn btn-secondary btn-md float-left mr-3 mb-1" >Example</a>
+						<a id="btnExampleWithoutSignature" class="btn btn-secondary btn-md float-left mr-3 mb-1" >Example w/o Signature</a>
+						<button id="btnGenerate" class="btn btn-primary btn-md float-right mb-1" type="Submit" value="">Generate</button>
+						<button id="btnPrint" class="btn btn-primary btn-md float-right mr-1 mb-1" value="">Print all</button>
+						<button id="btnSave" class="btn btn-primary btn-md float-right mr-1 mb-1" value="">Save one PDF</button>
+						<button id="btnSaveEach" class="btn btn-primary btn-md float-right mr-1 mb-1" value="">Save each participant as PDF</button>
 					</div>
 				</div>
 				<div class="row mt-2 mb-2" id="results">
@@ -308,7 +308,7 @@
                 const element = document.getElementById('results'); 
 				console.log(element)
 				html2pdf().set({
-					margin: [1.5, 1, 1, 1] , // [top, left, bottom, right].
+					margin: [1, 1, 1, 1] , // [top, left, bottom, right].
 					filename: 'Confirmation of Participation.pdf',
 					image: { type: 'jpeg', quality: 1 },
 					html2canvas: { dpi: 192, letterRendering: true, useCORS: true, scale: 4 },
@@ -324,7 +324,7 @@
 					const element = document.getElementById(participantsArray[participant]); 
 					console.log(element)
 					html2pdf().set({
-						margin: [1.5, 1, 1, 1] , // [top, left, bottom, right].
+						margin: [1, 1, 1, 1] , // [top, left, bottom, right].
 						filename: 'Confirmation of Participation - ' + participantsArray[participant] + '.pdf' ,
 						image: { type: 'jpeg', quality: 1 },
 						html2canvas: { dpi: 192, letterRendering: true, useCORS: true, scale: 4 },
@@ -398,7 +398,7 @@
 					case "University of Stuttgart": 
 						str += "<div class='row'><div class='col mt-4 mb-2'><p style='padding-bottom:50px'><img src='img/stuttgartlogo.jpg' class='float-right' width='150px' alt='Logo' /></p></div></div>"; break;
 				} 
-				
+				if(participantName == "") participantName = "<br /><div style='font-weight: normal;'>_______________________________________________________</div>";
 				str += "<h1>Confirmation of Participation</h1>";
 				str += "<p>With this letter " + (teamMembersArray.length > 1 ? "we" : "I") + ", " + teamMembersString + ", hereby confirm that </p><div class='participantName'>" + participantName + "</div><p> participated in " + (teamMembersArray.length > 1 ? "our" : "my") + " " + $("select[name='selectResearch']").val() + " <strong>" + capital_letter($("input[name='title']").val()) + "</strong>. The " + $("select[name='selectResearch']").val() + " occurred in the time " + theDateRange + " and lasted around " + $("input[name='duration']").val() + ". The research is supervised by " + $("input[name='supervisorName']").val() + " (" +  $("input[name='supervisorMail']").val() + ") at the " + $("select[name='selectInstitution']").val() + ".</p>";
 				str += "<p>The participation is rewarded with " +  $("select[name='compensation']").val() + ".</p><p> Repeated participation in the study is not permitted. Subsequent changes of the compensation are not allowed. The regulations of participation of the informed consent apply.</p>";
